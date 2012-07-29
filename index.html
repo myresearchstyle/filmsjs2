@@ -1,0 +1,51 @@
+<html>
+<head>
+	<title>Cinephilia</title>
+	<link rel="stylesheet" href="css/normalize.css" type="text/css"/>
+	<link rel="stylesheet" href="css/styles.css" type="text/css"/>
+	<script type="text/javascript" src="//use.typekit.net/iwk7uxf.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+</head>
+<body>
+	
+
+	<section id="page">
+	
+		<h1>Cinephilia</h1>
+		<h2>Find out what your favourite films are all about</h2>
+		<script type="text/x-handlebars">		
+			<ol>
+				{{#each Flm.listController}}
+					<li>
+							
+							<a href="#" {{action "loadFilm" target="Flm.listController"}}>
+								
+								{{title}}
+								{{poster}}
+							</a>
+						
+					</li>
+				{{/each}}
+			</ol>
+			
+			<div id="film">
+				{{#each Flm.filmDisplay}}
+						<h3>{{title}}</h3>
+						<div class="meta">
+							<em>Directed by:</em><br/> {{directed-by}}<br/>
+							<em>Genre:</em><br/> {{genre}}
+						</div>
+						<div class="synopsis"><em>Synopsis:</em>
+							{{synopsis}}
+						</div>
+				{{/each
+			</div>
+		</script>
+	</section>
+
+	<script src="js/libs/jquery.js"></script>
+	<script src="js/libs/ember.js"></script>
+	<script src="js/app.js"></script>
+
+</body>
+</html>

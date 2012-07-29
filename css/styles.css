@@ -1,0 +1,53 @@
+*::selection {
+	background-color: #df4545;
+	color: #fff;
+}
+
+*::-moz-selection {
+	background-color: #df4545;
+	color: #fff;
+}
+
+*::-o-selection {
+	background-color: #df4545;
+	color: #fff;
+}
+
+body {
+	color: #6e6e6e;
+	background-color: #fefbfb;
+	font: normal 400 16px/20px "runda",sans-serif;
+}
+
+#page {
+	width: 900px;
+	margin: 30px auto;
+}
+
+h1, h2, h3 {
+	font-weight: 100;
+	margin: 0;
+}
+
+h1 {
+	font-size: 24px;
+	line-height: 32px;
+	text-transform: uppercase;
+	
+}
+
+h2 {
+	font-size: 16px;
+	line-height: 24px;
+}
+
+h3 {
+	font-size: 36px;
+	line-height: 43px;
+	color: #df4545;
+}
+
+a {
+	color: #df4545;
+	text-decoration: none;
+}
