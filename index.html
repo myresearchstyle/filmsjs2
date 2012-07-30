@@ -2,50 +2,66 @@
 <head>
 	<title>Cinephilia</title>
 	<link rel="stylesheet" href="css/normalize.css" type="text/css"/>
+	<link rel="stylesheet" href="css/grid.css" type="text/css"/>
 	<link rel="stylesheet" href="css/styles.css" type="text/css"/>
 	<script type="text/javascript" src="//use.typekit.net/iwk7uxf.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	
 </head>
 <body>
 	
 
 	<section id="page">
-	
-		<h1>Cinephilia</h1>
-		<h2>Find out what your favourite films are all about</h2>
+		<header id="header">
+			<h1>Cinephilia</h1>
+			<h2>Find out what your favourite films are all about</h2>
+		</header>
 		<script type="text/x-handlebars">		
-			<ol>
-				{{#each Flm.listController}}
-					<li>
-							
-							<a href="#" {{action "loadFilm" target="Flm.listController"}}>
-								
-								{{title}}
-								{{poster}}
-							</a>
-						
-					</li>
-				{{/each}}
-			</ol>
+			<div id="films-wrapper">
+				{{view Flm.FilmFilter contentBinding="Flm.listController"}}
+				{{#view Flm.FilmListView}}
+				<ul id="films" class="clearfix">
+					{{#each Flm.filteredListController}}
+						{{#view Flm.FilmListItemView contentBinding = "this"}}
+							<li {{bindAttr title="content.title"}} class="film">
+								<img {{bindAttr src="content.thumb"}} alt="" />
+							</li>
+						{{/view}}
+					{{/each}}
+				</ol>
+				{{/view}}
+			</div>
 			
-			<div id="film">
+			<div id="film" class="row")>
 				{{#each Flm.filmDisplay}}
-						<h3>{{title}}</h3>
-						<div class="meta">
-							<em>Directed by:</em><br/> {{directed-by}}<br/>
-							<em>Genre:</em><br/> {{genre}}
+					{{#view Flm.FilmView contentBinding = "this"}}
+						<div id="image-wrapper" class="column col6of16")>
+							<img {{bindAttr src="content.poster"}} />
 						</div>
-						<div class="synopsis"><em>Synopsis:</em>
-							{{synopsis}}
+						<div class="title column col10of16">
+							<h3>{{content.title}}</h3>
 						</div>
-				{{/each
+						<ul class="meta column col3of16">
+							<li>
+								<strong>Directed by</strong> {{content.directed-by}}
+							</li>
+							<li>
+								<strong>Genre</strong> {{content.genre}}
+							</li>
+						</ul>
+						<div class="synopsis column col7of16">
+							{{content.synopsis}}
+						</div>
+					{{/view}}
+				{{/each}}
 			</div>
 		</script>
 	</section>
 
 	<script src="js/libs/jquery.js"></script>
+	<script src="js/libs/jquery.transit.js"></script>
 	<script src="js/libs/ember.js"></script>
 	<script src="js/app.js"></script>
-
+	<script src="js/scripts.js"></script>
 </body>
 </html>
